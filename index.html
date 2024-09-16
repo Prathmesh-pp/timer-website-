@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="countdown">
+            <h1>Countdown to IIT Goal</h1>
+            <div id="timer">
+                <div id="days"></div>
+                <div id="hours"></div>
+                <div id="minutes"></div>
+                <div id="seconds"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("2026-01-15T00:00:00");
+            const now = new Date();
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = `${days} Days`;
+            document.getElementById('hours').innerText = `${hours} Hours`;
+            document.getElementById('minutes').innerText = `${minutes} Minutes`;
+            document.getElementById('seconds').innerText = `${seconds} Seconds`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
